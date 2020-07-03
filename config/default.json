@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://linhham99:Coder99@khoapiterrr-trewj.azure.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "linhcutehotmexinchao",
+  "githubClientId": "46d7bdf633c94f114588",
+  "githubClientSecret": "ce51e25c700c02a06df46787dc88f85c44b167f7"
+}
