@@ -15,7 +15,7 @@ router.get('/status', (req, res) => res.send('OK'));
 
 router.use('/user', userRoutes);
 router.use('/auth', authRoutes);
-router.use('/post', postsRoutes);
+router.use('/posts', postsRoutes);
 router.use('/profile', profileRoutes);
 
 module.exports = router;

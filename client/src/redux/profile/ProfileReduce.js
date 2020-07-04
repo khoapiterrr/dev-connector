@@ -28,23 +28,14 @@ export default (state = initialState, { type, payload }) => {
         loading: false,
         myProfile: null,
       };
+
     case Action.CLEAR_PROFILE:
       return {
         ...state,
         myProfile: null,
         repos: [],
       };
-    case Action.GET_REPOS:
-      return {
-        ...state,
-        repos: payload,
-        loading: false,
-      };
-    case Action.NO_REPOS:
-      return {
-        ...state,
-        repos: [],
-      };
+
     default:
       return state;
   }

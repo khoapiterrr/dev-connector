@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { GetMyProfile, getProfiles } from '../../redux/profile/ProfileAction';
+import { GetMyProfile } from '../../redux/profile/ProfileAction';
 import DashboardAction from './DashboardAction';
 import Experience from './Experience';
 import Education from './Education';
@@ -12,12 +12,8 @@ const Dashboard = ({
   GetMyProfile,
   getAllProfiles,
   deleteAccount,
-  history,
-  match,
 }) => {
   useEffect(() => {
-    console.log(history, 'history');
-    console.log(match, 'match');
     GetMyProfile();
   }, [GetMyProfile]);
 
@@ -70,10 +66,10 @@ const mapStateToProps = (state) => ({
   currentProfile: state.profile.myProfile,
   auth: state.auth,
 });
-const mapDispatchToProps = {
-  getCurrentProfile: GetMyProfile,
-  getAllProfiles: getProfiles,
-};
+// const mapDispatchToProps = {
+//   getCurrentProfile: GetMyProfile,
+//   getAllProfiles: getProfiles,
+// };
 
 export default connect(mapStateToProps, { GetMyProfile })(Dashboard);
 // export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
