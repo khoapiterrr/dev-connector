@@ -29,7 +29,6 @@ export const getProfileById = (id) => async (dispatch) => {
     // });
   }
 };
-
 export const getProfiles = () => async (dispatch) => {
   try {
     const response = await Api.get(Path.PROFILES);
@@ -138,10 +137,10 @@ export const deleteExperience = (id) => async (dispatch) => {
 export const getGithubRepos = (username) => async (dispatch) => {
   try {
     const res = await Api.get(`/profile/github/${username}`);
-
+    console.log('getGithubRepos ' + res);
     dispatch({
       type: Action.GET_REPOS,
-      payload: res.data,
+      payload: res,
     });
   } catch (err) {
     dispatch({

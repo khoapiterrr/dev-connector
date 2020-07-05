@@ -27,7 +27,7 @@ const Profile = ({ getProfileById, profile: { myProfile }, auth, match }) => {
           {auth.user &&
             auth.isAuthenticated &&
             auth.loading === false &&
-            auth.user._id !== null && (
+            auth.user._id === myProfile.userId._id && (
               <Link to='/update-profile' className='btn btn-dark'>
                 Edit Profile
               </Link>

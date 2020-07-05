@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Animated } from 'react-animated-css';
 import { GetMyProfile, updateProfile } from '../../redux/profile/ProfileAction';
+import { updateUser } from '../../redux/Auth/AuthAction';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Alert from '../layouts/Alert';
+import ChangeAvatar from './ChangeAvatar';
+
 const initialState = {
   company: '',
   website: '',
@@ -24,9 +27,14 @@ const ProfileForm = ({
   currentProfile: { myProfile, loading },
   GetMyProfile,
   updateProfile,
+  updateUser,
 }) => {
   const [formData, setFormData] = useState(initialState);
+  const [infoUser, setinfoUser] = useState({});
 
+  const updateAvatar = (info) => {
+    setinfoUser(info);
+  };
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   const [socialAnimation, setsocialAnimation] = useState(displaySocialInputs);
 
@@ -56,10 +64,12 @@ const ProfileForm = ({
     e.preventDefault();
     try {
       updateProfile(formData);
+      updateUser(infoUser);
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     if (!myProfile) GetMyProfile();
     if (!loading && myProfile) {
@@ -85,6 +95,13 @@ const ProfileForm = ({
           <i className='fas fa-user' /> Let's get some information to make your
           profile stand out
         </p>
+        {myProfile ? (
+          <ChangeAvatar
+            updateAvatar={(e) => updateAvatar(e)}
+            user={myProfile.userId}
+          />
+        ) : null}
+
         <small>* = required field</small>
         <form className='form' onSubmit={(e) => handleSubmit(e)}>
           <div className='form-group'>
@@ -264,8 +281,11 @@ ProfileForm.propTypes = {
   GetMyProfile: PropTypes.func,
   currentProfile: PropTypes.object,
   updateProfile: PropTypes.func,
+  updateUser: PropTypes.func,
 };
 
-export default connect(mapStateToProps, { GetMyProfile, updateProfile })(
-  ProfileForm,
-);
+export default connect(mapStateToProps, {
+  GetMyProfile,
+  updateProfile,
+  updateUser,
+})(ProfileForm);
