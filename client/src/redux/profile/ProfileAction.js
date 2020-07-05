@@ -6,7 +6,6 @@ import { SetAlert } from '../Alert/AlertAction';
 export const GetMyProfile = () => async (dispatch) => {
   try {
     const response = await Api.get(Path.MY_PROFILE);
-    console.log('GetMyProfile -> response', response);
     dispatch({ type: Action.GET_MY_PROFILE, payload: response });
   } catch (error) {
     console.log(error.response.data, 'lôix');
@@ -16,20 +15,20 @@ export const GetMyProfile = () => async (dispatch) => {
 
 export const getProfileById = (id) => async (dispatch) => {
   try {
-    console.log(`/profile/user/${id}`, 'path');
     const response = await Api.get(`/profile/user/${id}`);
     dispatch({
       type: Action.GET_PROFILE,
       payload: response,
     });
+    return response;
   } catch (err) {
-    dispatch({
-      type: Action.PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+    console.log(err);
+    // dispatch({
+    //   type: Action.PROFILE_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status },
+    // });
   }
 };
-
 export const getProfiles = () => async (dispatch) => {
   try {
     const response = await Api.get(Path.PROFILES);
@@ -138,10 +137,10 @@ export const deleteExperience = (id) => async (dispatch) => {
 export const getGithubRepos = (username) => async (dispatch) => {
   try {
     const res = await Api.get(`/profile/github/${username}`);
-
+    console.log('getGithubRepos ' + res);
     dispatch({
       type: Action.GET_REPOS,
-      payload: res.data,
+      payload: res,
     });
   } catch (err) {
     dispatch({

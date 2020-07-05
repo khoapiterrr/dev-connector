@@ -2,6 +2,7 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const auth = require('../../middleware/auth');
 const User = require('../../models/user.model');
 const JWToken = require('../../utils/JsonWebToken');
 const router = express.Router();
@@ -62,6 +63,47 @@ router.post(
       user.token = token;
       await user.save();
       return res.status(200).send(user.transform());
+    } catch (error) {
+      console.log('Err ' + error.message);
+      return res.status(500).send('Server Error 500: ' + error.message);
+    }
+  },
+);
+// @router    Put api/user/update
+// @desc      cập  nhật
+// @access    Public
+router.put(
+  '/update',
+  [
+    auth,
+    [
+      check('name', 'Vui lòng nhập họ tên đầy đủ').not().isEmpty(),
+      check('email', 'Vui lòng nhập email').not().isEmpty(),
+      check('email', 'Email không đúng đinh dạng').isEmail(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    try {
+      const { name, email, avatar } = req.body;
+      let user = await User.findById(req.data.id);
+      if (!user) {
+        return res.status(400).json({ msg: 'Không tìm thấy user' });
+      }
+      const dataUpdate = {
+        name,
+        email,
+        avatar,
+      };
+      const updateUser = await User.findOneAndUpdate(
+        { _id: req.data.id },
+        { $set: dataUpdate },
+        { new: true },
+      );
+      return res.json(updateUser);
     } catch (error) {
       console.log('Err ' + error.message);
       return res.status(500).send('Server Error 500: ' + error.message);

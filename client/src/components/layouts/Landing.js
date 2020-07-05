@@ -1,15 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Api from '../../networking/api';
 export const Landing = () => {
-  const res = async () => {
-    try {
-      const data = await Api.get('/profile/me');
-      console.log(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <React.Fragment>
       <section className='landing'>
@@ -24,7 +15,7 @@ export const Landing = () => {
               <Link to='/register' className='btn btn-primary'>
                 Sign Up
               </Link>
-              <Link onClick={res} className='btn btn-light'>
+              <Link to='/login' className='btn btn-light'>
                 Login
               </Link>
             </div>

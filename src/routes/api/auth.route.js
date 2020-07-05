@@ -9,9 +9,14 @@ const JWToken = require('../../utils/JsonWebToken');
 // @router    GET api/auth
 // @desc      Test router
 // @access    Public
-router.get('/', auth, (req, res) => {
-  console.log(req.data);
-  res.send('Auth router');
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.data.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @router    POST api/auth/login
