@@ -22,6 +22,8 @@ const Login = (props) => {
         text: 'Đăng nhập thành công!',
         icon: 'success',
       });
+      localStorage.setItem('token', response.token);
+      console.log(localStorage.getItem('token'), 'tokennn');
       dispatch(LoginSuccess(response));
     } catch (error) {
       if (error) {

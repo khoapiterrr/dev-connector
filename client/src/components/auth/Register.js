@@ -27,6 +27,7 @@ const Register = (props) => {
         text: 'Đăng kí thành công!',
         icon: 'success',
       });
+      localStorage.setItem('token', response.token);
       dispatch(RegisterSuccess(response));
     } catch (error) {
       if (error) {

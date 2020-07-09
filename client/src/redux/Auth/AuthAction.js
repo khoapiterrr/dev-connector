@@ -9,7 +9,6 @@ export const RegisterSuccess = (payload) => ({
 export const loadUser = () => async (dispatch) => {
   try {
     const res = await Api.get('/auth');
-
     dispatch({
       type: Action.USER_LOADED,
       payload: res,

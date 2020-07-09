@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/user.model');
 const JWToken = require('../../utils/JsonWebToken');
-
+const sendMail = require('../../utils/MailHelper');
 // @router    GET api/auth
 // @desc      Test router
 // @access    Public
@@ -46,7 +46,14 @@ router.post(
         return res.status(400).json({ errors: 'Mật khẩu không chính xác' });
       }
       user.token = await JWToken.generateToken({ email, id: user.id });
+      sendMail({
+        email: 'khoapiterrr99@gmail.com',
+        subject: 'Mail xác nhận',
+        name: 'Lê trọng khoa',
+        textPart: 'Cháu chào chú',
+      });
       await user.save();
+
       return res.status(200).send(user.transform());
     } catch (error) {
       console.log('Err ' + error.message);
