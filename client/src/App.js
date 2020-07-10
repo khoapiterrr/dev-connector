@@ -10,6 +10,7 @@ import { loadUser } from './redux/Auth/AuthAction';
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
+    console.log(process.env.REACT_APP_API_URI, 'ure');
   }, []);
   return (
     <Provider store={store}>

@@ -34,13 +34,13 @@ const Dashboard = ({
             <Education education={currentProfile.education} />
           )}
 
-          <div className='my-2'>
+          {/* <div className='my-2'>
             <button
               className='btn btn-danger'
               onClick={() => console.log('delte user')}>
               <i className='fas fa-user-minus' /> Delete My Account
             </button>
-          </div>
+          </div> */}
         </React.Fragment>
       ) : (
         <React.Fragment>

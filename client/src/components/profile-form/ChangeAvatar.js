@@ -47,7 +47,7 @@ const ChangeAvatar = ({ user, updateAvatar }) => {
         </div>
       </div>
 
-      <h3 className='lead'>Lê trọng khoa</h3>
+      <h3 className='lead'>{user.name}</h3>
       <input
         accept='image/*'
         type='file'

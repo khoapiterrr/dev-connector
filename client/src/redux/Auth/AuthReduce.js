@@ -16,7 +16,6 @@ export default (state = initialState, { type, payload }) => {
         user: payload,
       };
     case Action.LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
       return {
         ...state,
         user: payload,
@@ -24,7 +23,6 @@ export default (state = initialState, { type, payload }) => {
         isAuthenticated: true,
       };
     case Action.REGISTER_SUCCESS:
-      localStorage.setItem('token', payload.token);
       return {
         ...state,
         user: payload,
