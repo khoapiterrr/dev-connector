@@ -16,10 +16,7 @@ In the project directory, you can run:
 
 ![Demo](https://firebasestorage.googleapis.com/v0/b/dev-connector-72827.appspot.com/o/Screenshot%20from%202020-12-14%2009-54-47.png?alt=media&token=e8ab6bbe-48ba-45da-a923-4a60ee961188)
 
-![Demo](https://firebasestorage.googleapis.com/v0/b/dev-connector-72827.appspot.com/o/Screenshot%20from%202020-12-14%2009-54-05.png?alt=media&token=64c12a9e-1243-448e-ad18-fcc320be171a)
+![Demo](https://firebasestorage.googleapis.com/v0/b/dev-connector-72827.appspot.com/o/Screenshot%20from%202020-12-14%2009-55-30.png?alt=media&token=461db26d-799c-4223-84e8-cb6b75df8e69)
 
 
-![Demo](https://firebasestorage.googleapis.com/v0/b/dev-connector-72827.appspot.com/o/Screenshot%20from%202020-12-14%2009-54-05.png?alt=media&token=64c12a9e-1243-448e-ad18-fcc320be171a)
 
-
-![Demo](https://firebasestorage.googleapis.com/v0/b/dev-connector-72827.appspot.com/o/Screenshot%20from%202020-12-14%2009-54-05.png?alt=media&token=64c12a9e-1243-448e-ad18-fcc320be171a)
